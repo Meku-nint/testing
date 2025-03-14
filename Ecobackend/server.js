@@ -36,7 +36,6 @@ app.post('/admin', upload.single('file'), async (req, res) => {
 
         res.status(201).json({ msg: 'File uploaded successfully', fileUrl });
     } catch (error) {
-        console.error('Error uploading file:', error);
         res.status(500).json({ msg: 'File not uploaded', error: error.message });
     }
 });
@@ -45,7 +44,6 @@ app.get('/images',async(req,res)=>{
         const images=await Cloth.find();
         res.status(200).json(images);
     } catch (error) {
-        console.error('Error getting images:', error);
         res.status(500).json({ msg: 'Error getting images', error: error.message });
     }
 })
