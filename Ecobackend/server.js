@@ -49,7 +49,7 @@ app.get('/images',async(req,res)=>{
         res.status(500).json({ msg: 'Error getting images', error: error.message });
     }
 })
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 const startServer = async () => {
     try {
         await connectDB();
