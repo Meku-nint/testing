@@ -5,10 +5,21 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { Cloth } from './models/schemas.js';
 import connectDB from './database/Connect.js';
+import cors from 'cors';
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
+const allowedOrigins = ['https://testtt-w4k1.onrender.com', 'http://localhost:3000']; // Add your frontend URL here
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block request
+    }
+  },
+}));
 app.use(express.json());
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
