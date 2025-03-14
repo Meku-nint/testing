@@ -26,7 +26,7 @@ function App() {
 
   const getHandler = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/images');
+      const res = await axios.get('https://testing-xl1o.onrender.com/images');
       setView(true);
       setDataFromServer(res.data);
     } catch (error) {
@@ -43,7 +43,7 @@ function App() {
     formData.append('category', form.category);
 
     try {
-      const res = await axios.post('http://localhost:3000/admin', formData, {
+      const res = await axios.post('https://testing-xl1o.onrender.com/admin', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
